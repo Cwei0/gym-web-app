@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
-import { Navbar } from "./components";
+import { useContext, useEffect, useState } from "react";
+import { Benefits, Hero, Navbar, OurClasses } from "./components";
 import { SelectedPage } from "./types";
+import { SelectedPageContext, SelectedPageProvider } from "./context";
 
 export const App = () => {
-  const [selectedPage, setSelectedPage] = useState<SelectedPage>(
-    SelectedPage.Home
-  );
+  const { setSelectedPage } = useContext(SelectedPageContext);
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
 
   useEffect(() => {
@@ -24,12 +23,13 @@ export const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="app bg-gray-20">
-      <Navbar
-        isTopOfPage={isTopOfPage}
-        selectedPage={selectedPage}
-        setSelectedPage={setSelectedPage}
-      />
-    </div>
+    <SelectedPageProvider>
+      <div className="app bg-gray-20">
+        <Navbar isTopOfPage={isTopOfPage} />
+        <Hero />
+        <Benefits />
+        <OurClasses />
+      </div>
+    </SelectedPageProvider>
   );
 };
