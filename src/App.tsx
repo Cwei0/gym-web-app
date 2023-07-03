@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Benefits, Hero, Navbar, OurClasses } from "./components";
+import { Benefits, ContactUs, Hero, Navbar, OurClasses } from "./components";
 import { SelectedPage } from "./types";
 import { SelectedPageContext, SelectedPageProvider } from "./context";
 
@@ -29,6 +29,7 @@ export const App = () => {
         <Hero />
         <Benefits />
         <OurClasses />
+        <ContactUs/>
       </div>
     </SelectedPageProvider>
   );
