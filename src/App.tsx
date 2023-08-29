@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Benefits, ContactUs, Hero, Navbar, OurClasses } from "./components";
+import { Benefits, ContactUs, Footer, Hero, Navbar, OurClasses } from "./components";
 import { SelectedPage } from "./types";
 import { SelectedPageContext, SelectedPageProvider } from "./context";
 
@@ -14,11 +14,14 @@ export const App = () => {
         setSelectedPage(SelectedPage.Home);
       }
 
+      // If user is scrolling, update isTopOfPage accordingly
       if (window.scrollY !== 0) setIsTopOfPage(!isTopOfPage);
     };
 
+     // Adding scroll event listener
     window.addEventListener("scroll", handleScroll);
 
+    // Cleanup by removing the scroll event listener on unmount
     return () => window.removeEventListener("scroll", handleScroll);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -30,6 +33,7 @@ export const App = () => {
         <Benefits />
         <OurClasses />
         <ContactUs/>
+        <Footer />
       </div>
     </SelectedPageProvider>
   );

@@ -4,3 +4,4 @@ export * from "./Class";
 export * from "./Htext";
 export * from "./Benefit";
 export * from "./ActionButton";
+export * from "./Schema";
